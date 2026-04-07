@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sotto. Menu & Price</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pink: #ED9DA0;
+    --blue: #b8d8de;
+    --dark: #2e2320;
+    --dark-card: #362a27;
+    --text: #3a3a3a;
+    --text-light: #888;
+    --text-muted: #aaa;
+    --bg: #faf9f7;
+    --bg-warm: #f5f2ee;
+    --bg-beige: #f0ece6;
+    --border: #e0dbd5;
+  }
+
+  html { font-size: 15px; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .site-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo-box {
+    font-family: 'Hind', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    line-height: 1;
+  }
+  .header-location {
+    font-size: 11.5px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .header-location::before {
+    content: "📍";
+    font-size: 11px;
+  }
+
+  /* HERO DARK */
+  .hero-dark {
+    background: var(--dark);
+    padding: 52px 28px 44px;
+    text-align: center;
+  }
+  .hero-dark .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+  }
+  .hero-dark h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #fff;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .hero-dark h1 span {
+    display: inline-block;
+    background: var(--pink);
+    height: 3px;
+    width: 80px;
+    vertical-align: middle;
+    margin-left: 4px;
+    border-radius: 2px;
+  }
+  .hero-dark .sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.9;
+    margin-bottom: 28px;
+  }
+  .hero-dark .tag-line {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 12px 20px;
+    display: inline-block;
+  }
+/* STEP INTRO */
+  .step-intro {
+    padding: 48px 24px 20px;
+    background: var(--bg);
+  }
+  .step-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    color: var(--blue);
+    margin-bottom: 18px;
+  }
+  .step-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1.5px;
+    background: var(--blue);
+  }
+  .step-intro h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .step-intro .sub {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.9;
+    text-align: center;
+  }
+
+  /* COURSE CARD */
+  .course-card {
+    background: #fff;
+    margin: 0 16px 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .course-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: var(--bg-beige);
+  }
+  .course-card .img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #e8e0d8 0%, #d5cfc8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .course-card .img-placeholder span {
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 0.15em;
+  }
+  .course-body {
+    padding: 24px 22px;
+  }
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    line-height: 1;
+  }
+  .badge.outline {
+    border-color: var(--border);
+    color: var(--text-light);
+  }
+  .course-name {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .course-type {
+    font-size: 13px;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .price-row {
+    margin-bottom: 16px;
+  }
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 34px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .price-tax {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-left: 4px;
+  }
+  .course-desc {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--text);
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+  }
+  .includes-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .includes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 20px;
+  }
+  .includes-list li {
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .includes-list li::before {
+    content: '−';
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .course-cta {
+    background: #fef6f6;
+    border: 1px solid #f5e5e5;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    color: var(--pink);
+    line-height: 1.7;
+  }
+  .course-cta.blue {
+    background: #f2f8fa;
+    border-color: #daedf1;
+    color: #7ab5bf;
+  }
+  /* OR DIVIDER */
+  .or-divider {
+    display: flex;
+    align-items: center;
+    padding: 28px 24px;
+    gap: 16px;
+  }
+  .or-divider::before,
+  .or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .or-divider span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* PREMIUM SECTION */
+  .premium-intro {
+    text-align: center;
+    padding: 44px 24px 20px;
+    background: var(--bg);
+  }
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider span {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+  .premium-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+  }
+  .premium-intro h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 1.75;
+  }
+
+  /* PREMIUM DARK CARD */
+  .course-card.dark {
+    background: var(--dark-card);
+    border: none;
+    margin: 0 16px 0;
+  }
+  .course-card.dark .course-body {
+    background: var(--dark-card);
+  }
+  .course-card.dark .badge {
+    border-color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+  }
+  .course-card.dark .course-name {
+    color: #fff;
+  }
+  .course-card.dark .course-type {
+    color: #c4a882;
+  }
+  .course-card.dark .price {
+    color: #c4a882;
+  }
+  .course-card.dark .price-tax {
+    color: rgba(255,255,255,0.4);
+  }
+  .course-card.dark .course-desc {
+    color: rgba(255,255,255,0.75);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  .course-card.dark .includes-label {
+    color: rgba(255,255,255,0.3);
+  }
+  .course-card.dark .includes-list li {
+    color: rgba(255,255,255,0.8);
+  }
+  .course-card.dark .includes-list li::before {
+    color: rgba(255,255,255,0.3);
+  }
+  .bonus-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 10px;
+  }
+  .bonus-item {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .bonus-item::before {
+    content: '✦';
+    font-size: 10px;
+    color: #c4a882;
+  }
+  /* CUSTOMIZE SECTION */
+  .customize-intro {
+    padding: 48px 24px 24px;
+    background: var(--bg);
+  }
+  .customize-intro h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+  .customize-intro .sub {
+    font-size: 12.5px;
+    color: var(--text-light);
+    text-align: center;
+  }
+  .single-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 16px;
+    margin-bottom: 12px;
+  }
+  .single-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .single-card .card-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    background: var(--bg-beige);
+    display: block;
+  }
+  .single-card .card-img-ph {
+    width: 100%;
+    height: 130px;
+    background: linear-gradient(135deg, #e8e4df 0%, #d8d2cc 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: 0.1em;
+  }
+  .single-card .card-body {
+    padding: 14px 14px 16px;
+  }
+  .single-card .card-label {
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .single-card .card-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .single-card .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+  .single-card .card-desc {
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .wide-card {
+    margin: 0 16px 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .wide-card .card-img-wide {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #e8e4df, #d8d3ce);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+  }
+  .wide-card .card-body {
+    padding: 18px 20px 20px;
+  }
+  .wide-card .card-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .wide-card .card-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .wide-card .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .wide-card .card-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+  .coming-card {
+    margin: 0 16px 32px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .coming-card .name {
+    font-size: 15px;
+    color: var(--text);
+  }
+  .coming-badge {
+    border: 1px solid var(--border);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    padding: 5px 12px;
+  }
+ /* OWNER */
+  .owner-section {
+    background: var(--bg-warm);
+  }
+  .owner-header {
+    padding: 40px 24px 0;
+  }
+  .owner-photo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    background: #d8d4cf;
+  }
+  .owner-photo-ph {
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(180deg, #ccc 0%, #b8b4af 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.1em;
+  }
+  .owner-info {
+    padding: 28px 24px 36px;
+  }
+  .owner-role {
+    display: inline-block;
+    border: 1px solid var(--border);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--text-light);
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+  .owner-name-ja {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
+  }
+  .owner-name-en {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+  }
+  .cert-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cert-badge {
+    border: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text);
+    padding: 7px 12px;
+    line-height: 1;
+    background: #fff;
+  }
+/* INFO SECTION */
+  .info-section {
+    background: var(--bg-beige);
+    padding: 40px 24px;
+  }
+  .info-block {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+  .info-block:last-child { margin-bottom: 0; }
+  .info-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .info-content { flex: 1; }
+  .info-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .info-main {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+  .info-sub {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  /* CTA */
+  .cta-section {
+    padding: 52px 24px 40px;
+    text-align: center;
+    background: var(--bg);
+  }
+  .cta-section h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.75;
+    margin-bottom: 8px;
+  }
+  .cta-section .sub {
+    font-size: 12.5px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+  }
+  .btn-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #06C755;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    padding: 18px;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+  }
+  .btn-line .icon {
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .btn-line .icon svg { width: 14px; height: 14px; }
+  .btn-instagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-warm);
+    color: var(--text);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    padding: 18px;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .btn-instagram .icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .btn-instagram .icon svg { width: 14px; height: 14px; fill: #fff; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 44px 24px 32px;
+    text-align: center;
+  }
+ .footer-logo {
+    font-family: 'Hind', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .footer-logo-sub {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.2);
+    margin-bottom: 28px;
+    display: block;
+  }
+  .footer-address {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+  .footer-copy {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  /* SPACERS */
+  .spacer-sm { height: 24px; }
+  .spacer-md { height: 40px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-box">sotto.</div>
+  <div class="header-location">JR福山駅前徒歩2分（NEWCASPAすぐ）</div>
+</header>
+
+<!-- HERO -->
+<section class="hero-dark">
+  <p class="section-label">Menu &amp; Price</p>
+  <h1>「似合う」を理論で整え、<br>心に余白を。<span style="display:block;width:160px;height:8px;background:rgba(120,80,70,0.55);margin:2px auto 0;border-radius:1px;"></span></h1>
+  <p class="sub">外見の診断と内面のケアを融合させた<br>福山市の完全予約優先サロン</p>
+  <div class="tag-line">完全予約優先 / 自分と向き合える落ち着いた空間</div>
+</section>
+<!-- STEP 1 INTRO -->
+<section class="step-intro" style="text-align:center;">
+  <div class="step-label" style="justify-content:center;">STEP 1 — START YOUR JOURNEY</div>
+  <h2>あなたはどちらから整えますか？</h2>
+  <p class="sub">外見から？内面から？<br>どちらも同じ ¥18,000・約2時間のスタートコースです。</p>
+</section>
+
+<div class="spacer-sm"></div>
+
+<!-- COURSE 1: 似合う迷子卒業コース -->
+<div class="course-card">
+  <img src="https://i.ibb.co/WNZng1Lm/IMG-5105.jpg" class="course-img" style="width:100%;height:220px;object-fit:cover;display:block;">
+  <div class="course-body">
+    <div class="badge-row">
+      <span class="badge">人気 No.1</span>
+      <span class="badge outline">約２時間</span>
+    </div>
+    <div class="course-name">似合う迷子卒業コース</div>
+    <div class="course-type">カラー × 骨格</div>
+    <div class="price-row">
+      <span class="price">¥18,000</span><span class="price-tax">税込</span>
+    </div>
+    <p class="course-desc">「何を着ても決まらない」「似合う色がわからない」から卒業するための基本コース。理論で知るから、ひとりでも迷わなくなる。</p>
+    <p class="includes-label">INCLUDES</p>
+    <ul class="includes-list">
+      <li>16タイプ パーソナルカラー診断</li>
+      <li>骨格診断（3タイプ）</li>
+      <li>似合う色・形の解説</li>
+      <li>ファッション・メイクへの活かし方</li>
+      <li>診断結果資料お渡し</li>
+    </ul>
+    <div class="course-cta">外見から整える → 明日からのコーデに即使える理論を手に入れる</div>
+  </div>
+</div>
+
+<!-- OR -->
+<div class="or-divider"><span>or</span></div>
+
+<!-- COURSE 2: 内外面調律コース -->
+<div class="course-card">
+  <img src="https://i.ibb.co/1Hx74w7/IMG-5129.jpg" class="course-img" style="width:100%;height:220px;object-fit:cover;display:block;">
+  <div class="course-body">
+    <div class="badge-row">
+      <span class="badge" style="border-color:#b8d8de; color:#7ab5bf;">sotto. 独自</span>
+      <span class="badge outline">約２時間</span>
+    </div>
+    <div class="course-name">内外面調律コース</div>
+    <div class="course-type">カラー × セラピー</div>
+    <div class="price-row">
+      <span class="price">¥18,000</span><span class="price-tax">税込</span>
+    </div>
+    <p class="course-desc">外見の「似合う色」と内面の「今の気持ち」を両方から整える、sotto.だけの特別体験。外も内もしっくりくる自分へ。</p>
+    <p class="includes-label">INCLUDES</p>
+    <ul class="includes-list">
+      <li>16タイプ パーソナルカラー診断</li>
+      <li>カラーセラピーセッション</li>
+      <li>外見と内面を統合したカラーアドバイス</li>
+      <li>診断結果資料お渡し</li>
+    </ul>
+    <div class="course-cta blue">内面から整える → 「なりたい自分」の方向性が見えてくる</div>
+  </div>
+</div>
+
+<!-- PREMIUM INTRO -->
+<section class="premium-intro">
+  <div class="section-divider"><span>さらに上を目指したい方へ</span></div>
+  <p class="premium-label">— The Premium —</p>
+  <h2>一度で全てを終わらせたい、<br>本気の方のための最高峰コース。</h2>
+</section>
+
+<!-- COURSE 3: トータルイメージプロデュース -->
+<div class="course-card dark">
+  <img src="https://i.ibb.co/BHJPrC9s/IMG-4781.jpg" style="width:100%;height:200px;object-fit:cover;display:block;">
+  <div class="course-body">
+    <div class="badge-row">
+      <span class="badge">最高峰</span>
+      <span class="badge outline">約４時間</span>
+    </div>
+    <div class="course-name">トータルイメージ<br>プロデュース</div>
+    <div class="course-type">カラー × 骨格 × 顔 × メイク</div>
+    <div class="price-row">
+      <span class="price">¥45,000</span><span class="price-tax">税込</span>
+    </div>
+    <p class="course-desc">色・骨格・顔・メイクを全部整えて、もう服選びで迷わなくなるプレミアムコース。一度受ければ、買い物もメイクも「理由のある選択」ができるようになります。</p>
+    <p class="includes-label">FULL COURSE INCLUDES</p>
+    <ul class="includes-list">
+      <li>16タイプ パーソナルカラー診断</li>
+      <li>骨格診断（3タイプ）</li>
+      <li>顔型分析</li>
+      <li>フルメイクレッスン</li>
+      <li>診断結果資料お渡し</li>
+    </ul>
+    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:18px; margin-top:4px;">
+      <p class="bonus-label">SPECIAL BONUS</p>
+      <div class="bonus-item">1ヶ月間 LINE 相談フォロー</div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer-md"></div>
+
+<!-- CUSTOMIZE -->
+<section class="customize-intro" style="text-align:center;">
+  <div class="step-label" style="justify-content:center;">CUSTOMIZE — Single &amp; Add-on</div>
+  <h2>自分に合わせて選びたい方へ</h2>
+  <p class="sub">単品・追加メニューとしてお選びいただけます</p>
+</section>
+
+<div class="spacer-sm" style="height:16px;"></div>
+
+<div class="single-grid">
+  <div class="single-card">
+    <img src="https://i.ibb.co/w16ScN2/Untitled-design-2.png" style="width:100%;height:130px;object-fit:cover;display:block;">
+    <div class="card-body">
+      <p class="card-label">COLOR ONLY</p>
+      <p class="card-name">16タイプ<br>パーソナルカラー診断</p>
+      <div class="card-price">¥15,000<span style="font-size:11px;color:#888;"> 税込</span></div>
+      <p class="card-desc">まず色だけ知りたい方へ / 約1.5時間</p>
+      <div style="margin-top:10px;background:#f2f8fa;border:1px solid #daedf1;border-radius:2px;padding:8px 10px;">
+        <p style="font-size:10px;letter-spacing:0.12em;color:#7ab5bf;margin-bottom:3px;">PAIR DISCOUNT</p>
+        <p style="font-size:12px;color:#3a3a3a;line-height:1.6;">お友達・ペアで<span style="font-weight:500;color:#ED9DA0;">各¥14,000</span><span style="font-size:10px;color:#888;"> 税込</span><span style="font-size:10px;color:#aaa;margin-left:4px;">(通常より¥1,000引き)</span></p>
+        <p style="font-size:10.5px;color:#888;margin-top:2px;">2名同時・同日のご予約に限ります</p>
+      </div>
+    </div>
+  </div>
+  <div class="single-card">
+    <img src="https://i.ibb.co/SXdKpvn2/IMG-5130.jpg" style="width:100%;height:130px;object-fit:cover;object-position:center top;display:block;">
+    <div class="card-body">
+      <p class="card-label">FACE + MAKE</p>
+      <p class="card-name">顔分析＋<br>メイクレッスン</p>
+      <div class="card-price">¥22,000<span style="font-size:11px;color:#888;"> 税込</span></div>
+      <p class="card-desc">顔型・パーツの特徴を特許取得済「顔分析フィルム®」で客観的に分析。感覚に頼らない、あなただけのメイクデザインを提案します。約2時間</p>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+        <p style="font-size:10px;letter-spacing:0.18em;color:#aaa;margin-bottom:8px;">INCLUDES</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+          <li style="font-size:12px;color:#3a3a3a;display:flex;align-items:baseline;gap:7px;"><span style="color:#aaa;">−</span>顔型・パーツバランスの客観的分析</li>
+          <li style="font-size:12px;color:#3a3a3a;display:flex;align-items:baseline;gap:7px;"><span style="color:#aaa;">−</span>顔分析フィルム®（特許取得済）使用</li>
+          <li style="font-size:12px;color:#3a3a3a;display:flex;align-items:baseline;gap:7px;"><span style="color:#aaa;">−</span>パーソナルメイクデザイン提案</li>
+          <li style="font-size:12px;color:#3a3a3a;display:flex;align-items:baseline;gap:7px;"><span style="color:#aaa;">−</span>メイクレッスン実践</li>
+          <li style="font-size:12px;color:#3a3a3a;display:flex;align-items:baseline;gap:7px;"><span style="color:#aaa;">−</span>診断結果資料お渡し</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wide-card">
+  <img src="https://i.ibb.co/BHJPrC9s/IMG-4781.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
+  <div class="card-body">
+    <p class="card-label">COSMETICS</p>
+    <p class="card-name">コスメ見直し相談</p>
+    <div class="card-price">¥10,000<span style="font-size:12px;color:#888;"> 税込</span></div>
+    <p class="card-desc">手持ちコスメの仕分け＋ポイントメイク。コスメをご持参ください。約1時間</p>
+  </div>
+</div>
+
+<div class="wide-card" style="margin-bottom:12px;">
+  <img src="https://i.ibb.co/MDk1Jvkf/IMG-2878.jpg" style="width:100%;height:180px;object-fit:cover;object-position:center 30%;display:block;">
+  <div class="card-body">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <p class="card-label" style="margin-bottom:0;">QUICK COLOR</p>
+      <span style="background:#f2f8fa;border:1px solid #daedf1;font-size:9.5px;letter-spacing:0.12em;color:#7ab5bf;padding:3px 8px;">予約不要</span>
+    </div>
+    <p class="card-name">簡易パーソナルカラー診断</p>
+    <div class="card-price">¥1,000<span style="font-size:12px;color:#888;"> 税込</span></div>
+    <p class="card-desc">約20分・予約不要でお気軽に体験できる簡易診断。まずは自分に似合う色を知りたい方へ。</p>
+  </div>
+</div>
+<div class="coming-card">
+  <span class="name">ショッピング同行</span>
+  <span class="coming-badge">COMING SOON</span>
+</div>
+
+<!-- OWNER -->
+<section class="owner-section">
+  <div class="owner-header">
+    <div class="step-label">OWNER</div>
+  </div>
+  <img src="https://i.ibb.co/k6KbnFcm/IMG-4798.jpg" style="width:100%;display:block;object-fit:cover;">
+  <div class="owner-info">
+    <span class="owner-role">IMAGE CONSULTANT</span>
+    <div class="owner-name-ja">佐 藤 　あ ゆ</div>
+    <div class="owner-name-en">Ayu Sato</div>
+    <div class="cert-list">
+      <span class="cert-badge">ラピス認定 16タイプ・パーソナルカラーアナリスト®</span>
+      <span class="cert-badge">16タイプ・コスメアドバイザー</span>
+      <span class="cert-badge">16タイプ・メイクアップアドバイザー</span>
+      <span class="cert-badge">16タイプ・カラーセラピスト</span>
+      <span class="cert-badge">骨格診断（3タイプ）</span>
+      <span class="cert-badge">顔分析パーソナルメイクアップ®アドバイザー</span>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info-section">
+  <div class="info-block">
+    <div class="info-icon">📍</div>
+    <div class="info-content">
+      <p class="info-label">LOCATION</p>
+      <p class="info-main">JR福山駅前徒歩2分（NEWCASPAすぐ）</p>
+      <p class="info-sub">広島県福山市三之丸町1-18<br>NEWCASPA 2F Share Style内</p>
+      <p style="font-size:11.5px;color:#888;margin-top:6px;">当サロンはシェアサロンで営業しております。</p>
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-icon">🕐</div>
+    <div class="info-content">
+      <p class="info-label">HOURS</p>
+      <p class="info-main">10:00〜16:00</p>
+      <p class="info-sub">定休日：水曜・木曜<br>最新予定はInstagramをご確認ください</p>
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-icon">✦</div>
+    <div class="info-content">
+      <p class="info-label">RESERVATION</p>
+      <p class="info-main">完全予約優先</p>
+      <p class="info-sub">公式LINEよりご予約ください</p>
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-icon">💳</div>
+    <div class="info-content">
+      <p class="info-label">PAYMENT</p>
+      <p class="info-main" style="margin-bottom:10px;">現金</p>
+      <p style="font-size:11.5px;color:#3a3a3a;margin-bottom:2px;">クレジットカード</p>
+      <p class="info-sub" style="margin-bottom:10px;">JCB / MasterCard / VISA / American Express</p>
+      <p style="font-size:11.5px;color:#3a3a3a;margin-bottom:2px;">電子マネー</p>
+      <p class="info-sub" style="margin-bottom:10px;">交通系IC / iD / QUICPay</p>
+      <p style="font-size:11.5px;color:#3a3a3a;margin-bottom:2px;">コード決済</p>
+      <p class="info-sub">d払い / 楽天ペイ / au PAY / PayPay / スマートコード</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>あなたの「なりたい」に、<br>理論で答えます。</h2>
+  <p class="sub">まずはLINEからお気軽にご相談ください</p>
+  <a href="#" class="btn-line">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="#06C755"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.76 1.32 5.24 3.4 6.93V22l4.47-2.46A10.7 10.7 0 0012 20c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+    </div>
+    LINE で予約・相談する
+  </a>
+  <a href="#" class="btn-instagram" style="white-space:nowrap;justify-content:center;">
+    <div class="icon" style="flex-shrink:0;">
+      <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </div>
+    Instagram で最新情報を見る
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">sotto.</span>
+  <span class="footer-logo-sub">COLOR &amp; IMAGE CONSULTING</span>
+  <div class="footer-address">
+    広島県福山市三之丸町1-18<br>
+    NEWCASPA 2F Share Style内<br>
+    JR福山駅前南口 徒歩2分
+  </div>
+  <p class="footer-copy">© 2025 sotto. COLOR &amp; IMAGE CONSULTING</p>
+</footer>
+
+</body>
+</html>
